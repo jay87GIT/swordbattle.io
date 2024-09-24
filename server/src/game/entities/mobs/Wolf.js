@@ -21,17 +21,14 @@ class WolfMob extends Entity {
   };
 
   constructor(game, objectData) {
-    this.isGlobal = this.definition.isBoss;
     objectData = Object.assign({ size: 70 }, objectData);
     super(game, Types.Entity.Wolf, objectData);
 
+    this.isGlobal = this.definition.isBoss;
+
     this.shape = Circle.create(0, 0, this.size);
     this.angle = helpers.random(-Math.PI, Math.PI);
-    if (this.definiton.isBoss == true) {
-      this.coinsDrop = this.size * (this.definition.isBoss ? 100 : 1);
-    } else {
-      this.coinsDrop = this.size * 10;
-    }
+    this.coinsDrop = this.size * (this.definition.isBoss ? 100 : 10);
 
     this.tamedBy = null;
 
