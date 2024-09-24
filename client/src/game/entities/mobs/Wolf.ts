@@ -17,9 +17,9 @@ class WolfMob extends BaseEntity {
       .sprite(0, 0, "wolfMobPassive")
       .setOrigin(0.5, 0.5);
     this.healthBar = new Health(this, {
-      offsetY: -this.shape.radius,
-      width: this.shape.radius,
-      height: 50,
+      offsetY: -this.shape.radius * 1.3,
+      width: this.shape.radius * 3,
+      height: this.shape.radius / 5,
     });
     this.container = this.game.add
       .container(this.shape.x, this.shape.y, [this.body])

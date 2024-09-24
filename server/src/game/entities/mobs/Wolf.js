@@ -11,7 +11,7 @@ class WolfMob extends Entity {
   static defaultDefinition = {
     forbiddenBiomes: [Types.Biome.Safezone, Types.Biome.River],
     attackRadius: 2000,
-    health: 25,
+    health: 50,
     fireballCooldown: [5, 6, 7],
     fireballDuration: [1, 1.5],
     fireballSpeed: 50,

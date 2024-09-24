@@ -68,6 +68,7 @@ module.exports = {
     Rook: 6,
     Stalker: 7,
     Warrior: 8,
+    Fisherman: 9,
   },
   Buff: {
     Speed: 1,
