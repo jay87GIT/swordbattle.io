@@ -9,7 +9,7 @@ const helpers = require("../../../helpers");
 
 class WolfMob extends Entity {
   static defaultDefinition = {
-    forbiddenBiomes: [Types.Biome.Safezone],
+    forbiddenBiomes: [Types.Biome.Safezone, Types.Biome.River],
     attackRadius: 1000,
   };
 
@@ -21,22 +21,23 @@ class WolfMob extends Entity {
 
     this.shape = Circle.create(0, 0, this.size);
     this.angle = helpers.random(-Math.PI, Math.PI);
-    this.coinsDrop = this.size * (this.definition.isBoss ? 100 : 10);
+    this.coinsDrop = this.size * (this.definition.isBoss ? 100 : 15);
 
     this.tamedBy = null;
 
     this.jumpTimer = new Timer(0, 2, 3);
     this.angryTimer = new Timer(0, 10, 20);
 
-    this.health = new Health(50, 2);
+    this.health = new Health(this.definition.health, this.definition.regen);
     this.speed = new Property(35);
     this.damage = new Property(15);
     this.target = null;
     this.targets.push(Types.Entity.Player);
-    this.definition.isBoss
-      ? this.definition.bossDamage
-      : this.definition.damage;
-
+    this.damage = new Property(
+      this.definition.isBoss
+        ? this.definition.bossDamage
+        : this.definition.damage
+    );
     this.knockbackResistance = new Property(2);
 
     this.spawn();
