@@ -11,13 +11,6 @@ class WolfMob extends Entity {
   static defaultDefinition = {
     forbiddenBiomes: [Types.Biome.Safezone],
     attackRadius: 1000,
-    fireballCooldown: [1, 2],
-    fireballDuration: [1, 2],
-    fireballCount: [1, 2, 3],
-    fireballSpeed: 70,
-    fireballSize: 30,
-    fireballsSpread: Math.PI / 6,
-    isBoss: false,
   };
 
   constructor(game, objectData) {
@@ -33,7 +26,6 @@ class WolfMob extends Entity {
     this.tamedBy = null;
 
     this.jumpTimer = new Timer(0, 2, 3);
-    this.fireballTimer.update(dt);
     this.angryTimer = new Timer(0, 10, 20);
 
     this.health = new Health(50, 2);
