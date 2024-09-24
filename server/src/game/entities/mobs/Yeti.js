@@ -31,7 +31,7 @@ class YetiMob extends Entity {
     this.isGlobal = this.definition.isBoss;
     this.shape = Circle.create(0, 0, this.size);
     this.angle = helpers.random(-Math.PI, Math.PI);
-    this.coinsDrop = this.size * (this.definition.isBoss ? 100 : 5);
+    this.coinsDrop = this.size * (this.definition.isBoss ? 100 : 10);
     this.density = 3;
 
     this.snowballTimer = new Timer(

@@ -33,6 +33,9 @@ class WolfMob extends Entity {
     this.damage = new Property(15);
     this.target = null;
     this.targets.push(Types.Entity.Player);
+    this.definition.isBoss
+      ? this.definition.bossDamage
+      : this.definition.damage;
 
     this.knockbackResistance = new Property(2);
 
