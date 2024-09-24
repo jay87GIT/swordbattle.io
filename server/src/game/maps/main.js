@@ -105,7 +105,7 @@ module.exports = {
         },
         {
           type: Types.Entity.Yeti,
-          amount: 1,
+          amount: 3,
           position: "random",
           respawnable: true,
           respawnTime: [60 * 10, 60 * 30], // 10-30 minutes
