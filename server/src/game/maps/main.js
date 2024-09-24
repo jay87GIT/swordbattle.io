@@ -199,10 +199,10 @@ module.exports = {
           respawnable: true,
           respawnTime: [60 * 10, 60 * 30], // 10-30 minutes
           size: [150, 200],
-          health: 200,
+          health: 450,
           isBoss: true,
-          damage: 5,
-          speed: 20,
+          damage: 15,
+          speed: 25,
         },
         {
           type: Types.Entity.Cat,
