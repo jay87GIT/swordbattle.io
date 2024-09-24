@@ -48,6 +48,7 @@ export enum EvolutionTypes {
   Samurai = 5,
   Rook = 6,
   Stalker = 7,
+  Warrior = 8,
 }
 
 export enum BuffTypes {
