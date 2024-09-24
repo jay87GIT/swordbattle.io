@@ -10,13 +10,14 @@ const helpers = require("../../../helpers");
 class WolfMob extends Entity {
   static defaultDefinition = {
     forbiddenBiomes: [Types.Biome.Safezone, Types.Biome.River],
-    attackRadius: 1000,
-    fireballCooldown: [3, 5],
-    fireballDuration: [5, 6],
-    fireballSpeed: 10,
-    fireballCount: [2, 2, 2],
-    fireballsSpread: Math.PI / 6,
-    fireballSize: 160,
+    attackRadius: 2000,
+    health: 25,
+    fireballCooldown: [5, 6, 7],
+    fireballDuration: [1, 1.5],
+    fireballSpeed: 50,
+    fireballCount: [2, 3, 4],
+    fireballsSpread: Math.PI / 3,
+    fireballSize: 70,
   };
 
   constructor(game, objectData) {
@@ -27,7 +28,7 @@ class WolfMob extends Entity {
 
     this.shape = Circle.create(0, 0, this.size);
     this.angle = helpers.random(-Math.PI, Math.PI);
-    this.coinsDrop = this.size * (this.definition.isBoss ? 100 : 15);
+    this.coinsDrop = this.size * (this.definition.isBoss ? 100 : 7);
 
     this.tamedBy = null;
 
@@ -44,11 +45,7 @@ class WolfMob extends Entity {
     this.damage = new Property(15);
     this.target = null;
     this.targets.push(Types.Entity.Player);
-    this.damage = new Property(
-      this.definition.isBoss
-        ? this.definition.bossDamage
-        : this.definition.damage
-    );
+
     this.knockbackResistance = new Property(2);
 
     this.spawn();
@@ -106,7 +103,7 @@ class WolfMob extends Entity {
       this.jumpTimer.update(dt);
     }
 
-    if (this.definition.isBoss) {
+    if (this.definition.isBoss && !this.angryTimer.finished) {
       this.fireballTimer.update(dt);
       if (this.fireballTimer.finished) {
         this.fireballTimer.renew();
