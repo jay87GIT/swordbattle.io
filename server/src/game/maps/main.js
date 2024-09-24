@@ -190,7 +190,7 @@ module.exports = {
           amount: 15,
           position: "random",
           respawnable: true,
-          size: [70, 100],
+          size: 120,
         },
         {
           type: Types.Entity.Wolf,

@@ -82,7 +82,7 @@ class Player extends BaseEntity {
     this.swordContainer = this.game.add.container(0, 0, [this.sword]);
 
     this.healthBar = new Health(this, {
-      hideWhenFull: true,
+      hideWhenFull: false,
       offsetY: -this.body.height / 2 - 40,
     });
 
