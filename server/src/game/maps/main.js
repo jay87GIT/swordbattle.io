@@ -194,12 +194,12 @@ module.exports = {
         },
         {
           type: Types.Entity.Wolf,
-          amount: 4,
+          amount: 2,
           position: "random",
           respawnable: true,
           respawnTime: [60 * 10, 60 * 30], // 10-30 minutes
-          size: [175, 250],
-          health: 400,
+          size: [250, 300],
+          health: 350,
           isBoss: true,
           speed: 25,
         },
