@@ -7,7 +7,7 @@ module.exports = {
     {
       type: Types.Biome.Safezone,
       pos: [0, 0],
-      radius: 1000,
+      radius: 1300,
       objects: [],
     },
     {
@@ -105,7 +105,7 @@ module.exports = {
         },
         {
           type: Types.Entity.Yeti,
-          amount: 3,
+          amount: 1,
           position: "random",
           respawnable: true,
           respawnTime: [60 * 10, 60 * 30], // 10-30 minutes
@@ -191,6 +191,18 @@ module.exports = {
           position: "random",
           respawnable: true,
           size: [70, 100],
+        },
+        {
+          type: Types.Entity.Wolf,
+          amount: 3,
+          position: "random",
+          respawnable: true,
+          respawnTime: [60 * 10, 60 * 30], // 10-30 minutes
+          size: [150, 200],
+          health: 200,
+          isBoss: true,
+          damage: 5,
+          speed: 20,
         },
         {
           type: Types.Entity.Cat,
