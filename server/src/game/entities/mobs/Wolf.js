@@ -11,6 +11,12 @@ class WolfMob extends Entity {
   static defaultDefinition = {
     forbiddenBiomes: [Types.Biome.Safezone, Types.Biome.River],
     attackRadius: 1000,
+    fireballCooldown: [3, 5],
+    fireballDuration: [5, 6],
+    fireballSpeed: 10,
+    fireballCount: [2, 2, 2],
+    fireballsSpread: Math.PI / 6,
+    fireballSize: 160,
   };
 
   constructor(game, objectData) {
@@ -25,6 +31,11 @@ class WolfMob extends Entity {
 
     this.tamedBy = null;
 
+    this.fireballTimer = new Timer(
+      0,
+      this.definition.fireballCooldown[0],
+      this.definition.fireballCooldown[1]
+    );
     this.jumpTimer = new Timer(0, 2, 3);
     this.angryTimer = new Timer(0, 10, 20);
 
@@ -95,6 +106,28 @@ class WolfMob extends Entity {
       this.jumpTimer.update(dt);
     }
 
+    if (this.definition.isBoss) {
+      this.fireballTimer.update(dt);
+      if (this.fireballTimer.finished) {
+        this.fireballTimer.renew();
+        const fireballs = helpers.randomChoice(this.definition.fireballCount);
+        const spread = this.definition.fireballsSpread;
+        for (let i = 0; i < fireballs; i++) {
+          this.game.map.addEntity({
+            type: Types.Entity.Fireball,
+            size: this.definition.fireballSize,
+            speed: this.definition.fireballSpeed,
+            angle: this.angle - (i - (fireballs - 1) / 2) * spread,
+            damage: this.damage.value,
+            duration: [
+              this.definition.fireballDuration[0],
+              this.definition.fireballDuration[1],
+            ],
+            position: [this.shape.x, this.shape.y],
+          });
+        }
+      }
+    }
     if (this.jumpTimer.finished) {
       this.jumpTimer.renew();
 
